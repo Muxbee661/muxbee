@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const GEMINI_MODEL = 'gemini-3.5-flash-lite';
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
