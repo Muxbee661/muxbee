@@ -1,0 +1,17 @@
+{
+  "name": "muxbee",
+  "version": "1.0.0",
+  "description": "Muxbee - A Nigerian-focused AI assistant powered by Gemini.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server.js"
+  },
+  "engines": {
+    "node": ">=26.0.0"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1"
+  }
+}

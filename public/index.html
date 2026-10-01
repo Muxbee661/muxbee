@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Muxbee — a modern AI assistant for Nigerians."
+  />
+
+  <meta name="theme-color" content="#08090d" />
+
+  <title>Muxbee — AI Assistant</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- Mobile overlay -->
+    <div
+      id="sidebarOverlay"
+      class="sidebar-overlay"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+
+      <div class="sidebar-top">
+
+        <button
+          id="brandButton"
+          class="brand"
+          type="button"
+          title="New chat"
+        >
+          <span class="brand-mark">
+            <span class="brand-mark-dot"></span>
+          </span>
+
+          <span class="brand-name">Muxbee</span>
+        </button>
+
+        <button
+          id="newChatButton"
+          class="icon-button new-chat-button"
+          type="button"
+          aria-label="New chat"
+          title="New chat"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 5v14M5 12h14"></path>
+          </svg>
+        </button>
+
+      </div>
+
+      <div class="sidebar-section">
+
+        <div class="sidebar-label">
+          <span>Chats</span>
+        </div>
+
+        <div id="historyList" class="history-list"></div>
+
+        <div id="emptyHistory" class="empty-history">
+          Your recent conversations will appear here.
+        </div>
+
+      </div>
+
+      <div class="sidebar-bottom">
+
+        <div class="sidebar-model">
+          <span class="status-dot"></span>
+
+          <div>
+            <strong>Muxbee AI</strong>
+            <span>Gemini 3.8 Flash</span>
+          </div>
+        </div>
+
+        <div class="sidebar-note">
+          Built for conversations across Nigeria.
+        </div>
+
+      </div>
+
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Top bar -->
+      <header class="topbar">
+
+        <button
+          id="mobileMenuButton"
+          class="icon-button mobile-menu-button"
+          type="button"
+          aria-label="Open menu"
+          title="Open menu"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+
+        <div class="topbar-mode">
+          <button
+            id="modeButton"
+            class="mode-button"
+            type="button"
+            aria-expanded="false"
+          >
+            <span id="modeIcon" class="mode-icon">✦</span>
+
+            <span>
+              <span id="modeName">General</span>
+              <small>Mode</small>
+            </span>
+
+            <svg
+              class="chevron"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </button>
+
+          <div
+            id="modeMenu"
+            class="mode-menu"
+            aria-hidden="true"
+          ></div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="model-pill">
+            <span class="model-dot"></span>
+            3.8 Flash
+          </span>
+        </div>
+
+      </header>
+
+      <!-- Chat area -->
+      <section id="chatArea" class="chat-area">
+
+        <!-- Welcome -->
+        <div id="welcomeScreen" class="welcome-screen">
+
+          <div class="welcome-orb">
+            <div class="orb-ring orb-ring-one"></div>
+            <div class="orb-ring orb-ring-two"></div>
+
+            <div class="muxbee-face">
+              <span class="eye eye-left"></span>
+              <span class="eye eye-right"></span>
+              <span class="mouth"></span>
+            </div>
+          </div>
+
+          <p class="welcome-eyebrow">YOUR NIGERIAN AI ASSISTANT</p>
+
+          <h1>
+            What can I help<br />
+            <span>you with?</span>
+          </h1>
+
+          <p class="welcome-description">
+            Chat naturally in English, Hausa or Nigerian Pidgin.
+            Ask anything, or choose a helper mode below.
+          </p>
+
+          <div
+            id="suggestionGrid"
+            class="suggestion-grid"
+          ></div>
+
+        </div>
+
+        <!-- Messages -->
+        <div
+          id="messages"
+          class="messages"
+          aria-live="polite"
+        ></div>
+
+      </section>
+
+      <!-- Composer -->
+      <div class="composer-area">
+
+        <div class="composer-wrapper">
+
+          <form
+            id="composerForm"
+            class="composer"
+            autocomplete="off"
+          >
+
+            <textarea
+              id="messageInput"
+              rows="1"
+              maxlength="12000"
+              placeholder="Message Muxbee..."
+              aria-label="Message Muxbee"
+            ></textarea>
+
+            <div class="composer-bottom">
+
+              <div class="composer-left">
+
+                <button
+                  id="composerModeButton"
+                  class="composer-mode"
+                  type="button"
+                  title="Change helper mode"
+                >
+                  <span id="composerModeIcon">✦</span>
+                  <span id="composerModeName">General</span>
+                </button>
+
+              </div>
+
+              <div class="composer-actions">
+
+                <span
+                  id="characterCount"
+                  class="character-count"
+                >
+                  0
+                </span>
+
+                <button
+                  id="stopButton"
+                  class="stop-button"
+                  type="button"
+                  aria-label="Stop generation"
+                  title="Stop generation"
+                  hidden
+                >
+                  <span class="stop-square"></span>
+                </button>
+
+                <button
+                  id="sendButton"
+                  class="send-button"
+                  type="submit"
+                  aria-label="Send message"
+                  title="Send message"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 19V5"></path>
+                    <path d="m6 11 6-6 6 6"></path>
+                  </svg>
+                </button>
+
+              </div>
+
+            </div>
+
+          </form>
+
+          <p class="composer-hint">
+            Enter to send · Shift + Enter for a new line
+          </p>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
