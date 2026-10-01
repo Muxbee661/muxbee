@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Muxbee Admin</title>
+
+  <link
+    rel="stylesheet"
+    href="/admin.css"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+
+  <div
+    id="login"
+    class="login-screen"
+  >
+
+    <div class="login-box">
+
+      <div class="login-brand">
+
+        <div class="brand-mark">
+          M
+        </div>
+
+        <div>
+          <h1>Muxbee</h1>
+          <span>Admin</span>
+        </div>
+
+      </div>
+
+      <div class="login-heading">
+
+        <h2>Welcome back</h2>
+
+        <p>
+          Sign in to manage your Muxbee dashboard.
+        </p>
+
+      </div>
+
+      <div class="input-group">
+
+        <label for="username">
+          Username
+        </label>
+
+        <input
+          id="username"
+          type="text"
+          placeholder="Enter username"
+          autocomplete="username"
+        >
+
+      </div>
+
+      <div class="input-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+        >
+
+      </div>
+
+      <button
+        id="loginButton"
+        class="login-button"
+      >
+        Login
+      </button>
+
+      <p id="loginMessage"></p>
+
+    </div>
+
+  </div>
+
+
+  <!-- DASHBOARD -->
+
+  <div
+    id="dashboard"
+    class="admin-layout"
+    style="display: none;"
+  >
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-top">
+
+        <div class="brand">
+
+          <div class="brand-mark">
+            M
+          </div>
+
+          <div class="brand-text">
+
+            <strong>Muxbee</strong>
+
+            <span>Admin</span>
+
+          </div>
+
+        </div>
+
+        <nav class="nav">
+
+          <p class="nav-label">
+            Dashboard
+          </p>
+
+          <button
+            class="nav-item active"
+            data-section="overview"
+          >
+            <span class="nav-icon">⌂</span>
+            <span>Overview</span>
+          </button>
+
+          <button
+            class="nav-item"
+            data-section="users"
+          >
+            <span class="nav-icon">○</span>
+            <span>Users</span>
+          </button>
+
+          <button
+            class="nav-item"
+            data-section="conversations"
+          >
+            <span class="nav-icon">◇</span>
+            <span>Conversations</span>
+          </button>
+
+          <p class="nav-label settings-label">
+            Manage
+          </p>
+
+          <button
+            class="nav-item"
+            data-section="ai"
+          >
+            <span class="nav-icon">✦</span>
+            <span>AI Settings</span>
+          </button>
+
+          <button
+            class="nav-item"
+            data-section="usage"
+          >
+            <span class="nav-icon">▥</span>
+            <span>Usage</span>
+          </button>
+
+          <button
+            class="nav-item"
+            data-section="admin"
+          >
+            <span class="nav-icon">⚙</span>
+            <span>Admin</span>
+          </button>
+
+        </nav>
+
+      </div>
+
+      <div class="sidebar-bottom">
+
+        <div class="admin-profile">
+
+          <div class="profile-avatar">
+            A
+          </div>
+
+          <div class="profile-info">
+
+            <strong>
+              Administrator
+            </strong>
+
+            <span>
+              Admin account
+            </span>
+
+          </div>
+
+        </div>
+
+        <button
+          id="logoutButton"
+          class="logout-button"
+        >
+          Log out
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+      <header class="topbar">
+
+        <div>
+
+          <p class="topbar-label">
+            MUXBEE ADMIN
+          </p>
+
+          <h1 id="pageTitle">
+            Overview
+          </h1>
+
+        </div>
+
+        <div class="status">
+
+          <span class="status-dot"></span>
+
+          <span>
+            System online
+          </span>
+
+        </div>
+
+      </header>
+
+
+      <!-- OVERVIEW -->
+
+      <section
+        id="overview"
+        class="dashboard-section active-section"
+      >
+
+        <div class="section-intro">
+
+          <div>
+
+            <h2>Overview</h2>
+
+            <p>
+              Monitor your Muxbee assistant from one place.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="stats">
+
+          <div class="card">
+
+            <div class="card-top">
+
+              <span class="card-label">
+                Users
+              </span>
+
+              <span class="card-symbol">
+                ○
+              </span>
+
+            </div>
+
+            <p id="users">
+              0
+            </p>
+
+            <span class="card-description">
+              Unique users
+            </span>
+
+          </div>
+
+          <div class="card">
+
+            <div class="card-top">
+
+              <span class="card-label">
+                Chats
+              </span>
+
+              <span class="card-symbol">
+                ◇
+              </span>
+
+            </div>
+
+            <p id="chats">
+              0
+            </p>
+
+            <span class="card-description">
+              Chat requests
+            </span>
+
+          </div>
+
+          <div class="card">
+
+            <div class="card-top">
+
+              <span class="card-label">
+                Messages
+              </span>
+
+              <span class="card-symbol">
+                ✦
+              </span>
+
+            </div>
+
+            <p id="messages">
+              0
+            </p>
+
+            <span class="card-description">
+              Messages processed
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="welcome-card">
+
+          <div class="welcome-content">
+
+            <span class="welcome-badge">
+              Muxbee
+            </span>
+
+            <h2 id="welcome">
+              Welcome to the Muxbee admin dashboard
+            </h2>
+
+            <p>
+              Use the sidebar to manage your assistant,
+              monitor usage and access administration tools.
+            </p>
+
+          </div>
+
+          <div class="welcome-glow"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- USERS -->
+
+      <section
+        id="usersSection"
+        class="dashboard-section"
+      >
+
+        <div class="section-intro">
+
+          <div>
+
+            <h2>Users</h2>
+
+            <p>
+              Anonymous users using Muxbee.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div
+          id="usersPanel"
+          class="data-panel"
+        >
+
+          <div class="data-loading">
+            Loading users...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONVERSATIONS -->
+
+      <section
+        id="conversations"
+        class="dashboard-section"
+      >
+
+        <div class="section-intro">
+
+          <div>
+
+            <h2>Conversations</h2>
+
+            <p>
+              Conversations handled by Muxbee.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div
+          id="conversationsPanel"
+          class="data-panel"
+        >
+
+          <div class="data-loading">
+            Loading conversations...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- AI -->
+
+      <section
+        id="ai"
+        class="dashboard-section"
+      >
+
+        <div class="section-intro">
+
+          <div>
+
+            <h2>AI Settings</h2>
+
+            <p>
+              Configure how Muxbee behaves and responds.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="settings-panel">
+
+          <div class="setting-row">
+
+            <div>
+              <strong>AI Model</strong>
+
+              <span>
+                The Gemini model currently powering Muxbee.
+              </span>
+            </div>
+
+            <div class="setting-value">
+              gemini-3.5-flash-lite
+            </div>
+
+          </div>
+
+          <div class="setting-row">
+
+            <div>
+              <strong>Default Language</strong>
+
+              <span>
+                Muxbee's default response language.
+              </span>
+            </div>
+
+            <div class="setting-value">
+              English
+            </div>
+
+          </div>
+
+          <div class="setting-row">
+
+            <div>
+
+              <strong>
+                Language Matching
+              </strong>
+
+              <span>
+                Muxbee can naturally match Pidgin,
+                Hausa and other user languages.
+              </span>
+
+            </div>
+
+            <div class="setting-status">
+              Enabled
+            </div>
+
+          </div>
+
+          <div class="setting-row">
+
+            <div>
+
+              <strong>
+                Rate Limit
+              </strong>
+
+              <span>
+                Maximum chat requests allowed per minute.
+              </span>
+
+            </div>
+
+            <div class="setting-value">
+              30 / min
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- USAGE -->
+
+      <section
+        id="usage"
+        class="dashboard-section"
+      >
+
+        <div class="section-intro">
+
+          <div>
+
+            <h2>Usage</h2>
+
+            <p>
+              Keep track of Muxbee activity and system usage.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="usage-grid">
+
+          <div class="usage-panel">
+
+            <span class="panel-label">
+              Total chats
+            </span>
+
+            <strong id="usageChats">
+              0
+            </strong>
+
+          </div>
+
+          <div class="usage-panel">
+
+            <span class="panel-label">
+              Total messages
+            </span>
+
+            <strong id="usageMessages">
+              0
+            </strong>
+
+          </div>
+
+          <div class="usage-panel">
+
+            <span class="panel-label">
+              API status
+            </span>
+
+            <strong class="online-text">
+              Connected
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADMIN -->
+
+      <section
+        id="admin"
+        class="dashboard-section"
+      >
+
+        <div class="section-intro">
+
+          <div>
+
+            <h2>Admin</h2>
+
+            <p>
+              Manage administrator access and security.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="settings-panel">
+
+          <div class="setting-row">
+
+            <div>
+
+              <strong>
+                Admin authentication
+              </strong>
+
+              <span>
+                Protected by username and password.
+              </span>
+
+            </div>
+
+            <div class="setting-status">
+              Active
+            </div>
+
+          </div>
+
+          <div class="setting-row">
+
+            <div>
+
+              <strong>
+                Session
+              </strong>
+
+              <span>
+                Your current admin session is active in this tab.
+              </span>
+
+            </div>
+
+            <div class="setting-status">
+              Active
+            </div>
+
+          </div>
+
+          <div class="setting-row danger-row">
+
+            <div>
+
+              <strong>
+                Log out
+              </strong>
+
+              <span>
+                End the current administrator session.
+              </span>
+
+            </div>
+
+            <button
+              id="adminLogoutButton"
+              class="danger-button"
+            >
+              Log out
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+<script>
+
+"use strict";
+
+const loginButton =
+  document.getElementById(
+    "loginButton"
+  );
+
+const logoutButton =
+  document.getElementById(
+    "logoutButton"
+  );
+
+const adminLogoutButton =
+  document.getElementById(
+    "adminLogoutButton"
+  );
+
+const loginScreen =
+  document.getElementById(
+    "login"
+  );
+
+const dashboard =
+  document.getElementById(
+    "dashboard"
+  );
+
+const loginMessage =
+  document.getElementById(
+    "loginMessage"
+  );
+
+const pageTitle =
+  document.getElementById(
+    "pageTitle"
+  );
+
+const navItems =
+  document.querySelectorAll(
+    ".nav-item"
+  );
+
+
+// ============================================================
+// LOAD DASHBOARD
+// ============================================================
+
+async function loadDashboard(
+  token
+) {
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/admin/stats",
+        {
+          headers: {
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if (!response.ok) {
+
+      sessionStorage.removeItem(
+        "adminToken"
+      );
+
+      return false;
+    }
+
+    loginScreen.style.display =
+      "none";
+
+    dashboard.style.display =
+      "flex";
+
+    document.getElementById(
+      "users"
+    ).textContent =
+      data.stats.users;
+
+    document.getElementById(
+      "chats"
+    ).textContent =
+      data.stats.chats;
+
+    document.getElementById(
+      "messages"
+    ).textContent =
+      data.stats.messages;
+
+    document.getElementById(
+      "usageChats"
+    ).textContent =
+      data.stats.chats;
+
+    document.getElementById(
+      "usageMessages"
+    ).textContent =
+      data.stats.messages;
+
+    document.getElementById(
+      "welcome"
+    ).textContent =
+      data.message;
+
+    return true;
+
+  } catch (error) {
+
+    console.error(
+      "Dashboard error:",
+      error
+    );
+
+    return false;
+  }
+}
+
+
+// ============================================================
+// USERS
+// ============================================================
+
+async function loadUsers() {
+
+  const token =
+    sessionStorage.getItem(
+      "adminToken"
+    );
+
+  if (!token) {
+    return;
+  }
+
+  const panel =
+    document.getElementById(
+      "usersPanel"
+    );
+
+  panel.innerHTML =
+    `<div class="data-loading">
+      Loading users...
+    </div>`;
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/admin/users",
+        {
+          headers: {
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.error ||
+        "Could not load users."
+      );
+    }
+
+    if (
+      !data.users ||
+      data.users.length === 0
+    ) {
+
+      panel.innerHTML =
+        `<div class="empty-panel">
+          <div class="empty-icon">○</div>
+          <h3>No users yet</h3>
+          <p>
+            Users will appear here after they use Muxbee.
+          </p>
+        </div>`;
+
+      return;
+    }
+
+    panel.innerHTML =
+      data.users
+        .map(
+          (user, index) => `
+            <div class="data-row">
+
+              <div class="data-main">
+
+                <div class="data-avatar">
+                  ${index + 1}
+                </div>
+
+                <div>
+
+                  <strong>
+                    Anonymous User
+                  </strong>
+
+                  <span class="data-id">
+                    ${escapeHTML(
+                      user.id
+                    )}
+                  </span>
+
+                </div>
+
+              </div>
+
+              <div class="data-meta">
+
+                <span>
+                  ${user.conversations}
+                  ${
+                    user.conversations === 1
+                      ? "conversation"
+                      : "conversations"
+                  }
+                </span>
+
+                <span>
+                  ${user.messages}
+                  ${
+                    user.messages === 1
+                      ? "message"
+                      : "messages"
+                  }
+                </span>
+
+                <span>
+                  Last seen:
+                  ${formatDate(
+                    user.lastSeen
+                  )}
+                </span>
+
+              </div>
+
+            </div>
+          `
+        )
+        .join("");
+
+  } catch (error) {
+
+    console.error(
+      "Users error:",
+      error
+    );
+
+    panel.innerHTML =
+      `<div class="empty-panel">
+        <h3>Could not load users</h3>
+        <p>
+          ${escapeHTML(
+            error.message
+          )}
+        </p>
+      </div>`;
+  }
+}
+
+
+// ============================================================
+// CONVERSATIONS
+// ============================================================
+
+async function loadConversations() {
+
+  const token =
+    sessionStorage.getItem(
+      "adminToken"
+    );
+
+  if (!token) {
+    return;
+  }
+
+  const panel =
+    document.getElementById(
+      "conversationsPanel"
+    );
+
+  panel.innerHTML =
+    `<div class="data-loading">
+      Loading conversations...
+    </div>`;
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/admin/conversations",
+        {
+          headers: {
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.error ||
+        "Could not load conversations."
+      );
+    }
+
+    if (
+      !data.conversations ||
+      data.conversations.length === 0
+    ) {
+
+      panel.innerHTML =
+        `<div class="empty-panel">
+          <div class="empty-icon">◇</div>
+          <h3>No conversations yet</h3>
+          <p>
+            Conversations will appear here after users chat with Muxbee.
+          </p>
+        </div>`;
+
+      return;
+    }
+
+    panel.innerHTML =
+      data.conversations
+        .map(
+          (conversation) => {
+
+            const messages =
+              Array.isArray(
+                conversation.messages
+              )
+                ? conversation.messages
+                : [];
+
+            const preview =
+              messages
+                .find(
+                  (message) =>
+                    message.role ===
+                    "user"
+                )
+                ?.content ||
+              "No message";
+
+            return `
+              <div class="conversation-card">
+
+                <div class="conversation-top">
+
+                  <div>
+
+                    <strong>
+                      ${escapeHTML(
+                        preview.length > 80
+                          ? preview.slice(
+                              0,
+                              80
+                            ) + "…"
+                          : preview
+                      )}
+                    </strong>
+
+                    <span class="data-id">
+                      ${escapeHTML(
+                        conversation.id
+                      )}
+                    </span>
+
+                  </div>
+
+                  <span class="mode-badge">
+                    ${escapeHTML(
+                      conversation.mode ||
+                      "general"
+                    )}
+                  </span>
+
+                </div>
+
+                <div class="conversation-meta">
+
+                  <span>
+                    User:
+                    ${escapeHTML(
+                      conversation.userId
+                    )}
+                  </span>
+
+                  <span>
+                    ${
+                      messages.length
+                    }
+                    ${
+                      messages.length === 1
+                        ? "message"
+                        : "messages"
+                    }
+                  </span>
+
+                  <span>
+                    ${formatDate(
+                      conversation.updatedAt
+                    )}
+                  </span>
+
+                </div>
+
+                <details class="conversation-details">
+
+                  <summary>
+                    View messages
+                  </summary>
+
+                  <div class="conversation-messages">
+
+                    ${messages
+                      .map(
+                        (message) => `
+                          <div class="conversation-message">
+
+                            <span class="message-role">
+                              ${
+                                message.role ===
+                                "user"
+                                  ? "User"
+                                  : "Muxbee"
+                              }
+                            </span>
+
+                            <p>
+                              ${escapeHTML(
+                                message.content
+                              ).replace(
+                                /\n/g,
+                                "<br>"
+                              )}
+                            </p>
+
+                          </div>
+                        `
+                      )
+                      .join("")}
+
+                  </div>
+
+                </details>
+
+              </div>
+            `;
+          }
+        )
+        .join("");
+
+  } catch (error) {
+
+    console.error(
+      "Conversations error:",
+      error
+    );
+
+    panel.innerHTML =
+      `<div class="empty-panel">
+        <h3>
+          Could not load conversations
+        </h3>
+
+        <p>
+          ${escapeHTML(
+            error.message
+          )}
+        </p>
+
+      </div>`;
+  }
+}
+
+
+// ============================================================
+// HELPERS
+// ============================================================
+
+function escapeHTML(
+  value
+) {
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+  div.textContent =
+    String(value ?? "");
+
+  return div.innerHTML;
+}
+
+
+function formatDate(
+  timestamp
+) {
+
+  if (!timestamp) {
+    return "Unknown";
+  }
+
+  return new Date(
+    timestamp
+  ).toLocaleString();
+}
+
+
+// ============================================================
+// SESSION
+// ============================================================
+
+const savedToken =
+  sessionStorage.getItem(
+    "adminToken"
+  );
+
+if (savedToken) {
+
+  loadDashboard(
+    savedToken
+  );
+
+}
+
+
+// ============================================================
+// LOGIN
+// ============================================================
+
+loginButton.addEventListener(
+  "click",
+  async () => {
+
+    const username =
+      document.getElementById(
+        "username"
+      ).value.trim();
+
+    const password =
+      document.getElementById(
+        "password"
+      ).value;
+
+    loginMessage.textContent =
+      "";
+
+    if (
+      !username ||
+      !password
+    ) {
+
+      loginMessage.textContent =
+        "Enter your username and password.";
+
+      return;
+    }
+
+    loginButton.disabled =
+      true;
+
+    loginButton.textContent =
+      "Signing in...";
+
+    try {
+
+      const response =
+        await fetch(
+          "/api/admin/login",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                username,
+                password
+              })
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if (!response.ok) {
+
+        loginMessage.textContent =
+          data.error ||
+          "Invalid username or password.";
+
+        return;
+      }
+
+      sessionStorage.setItem(
+        "adminToken",
+        data.token
+      );
+
+      await loadDashboard(
+        data.token
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Login error:",
+        error
+      );
+
+      loginMessage.textContent =
+        "Something went wrong. Please try again.";
+
+    } finally {
+
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        "Login";
+    }
+  }
+);
+
+
+// ============================================================
+// LOGOUT
+// ============================================================
+
+function logout() {
+
+  sessionStorage.removeItem(
+    "adminToken"
+  );
+
+  dashboard.style.display =
+    "none";
+
+  loginScreen.style.display =
+    "flex";
+
+  document.getElementById(
+    "password"
+  ).value = "";
+}
+
+
+logoutButton.addEventListener(
+  "click",
+  logout
+);
+
+adminLogoutButton.addEventListener(
+  "click",
+  logout
+);
+
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+
+navItems.forEach(
+  (item) => {
+
+    item.addEventListener(
+      "click",
+      async () => {
+
+        const target =
+          item.dataset.section;
+
+        navItems.forEach(
+          (nav) =>
+            nav.classList.remove(
+              "active"
+            )
+        );
+
+        item.classList.add(
+          "active"
+        );
+
+        document
+          .querySelectorAll(
+            ".dashboard-section"
+          )
+          .forEach(
+            (section) =>
+              section.classList.remove(
+                "active-section"
+              )
+          );
+
+        let targetId =
+          target;
+
+        if (
+          target ===
+          "users"
+        ) {
+          targetId =
+            "usersSection";
+        }
+
+        const section =
+          document.getElementById(
+            targetId
+          );
+
+        if (section) {
+
+          section.classList.add(
+            "active-section"
+          );
+        }
+
+        const title =
+          item.querySelector(
+            "span:last-child"
+          )?.textContent ||
+          "Overview";
+
+        pageTitle.textContent =
+          title;
+
+        if (
+          target ===
+          "users"
+        ) {
+          await loadUsers();
+        }
+
+        if (
+          target ===
+          "conversations"
+        ) {
+          await loadConversations();
+        }
+
+      }
+    );
+  }
+);
+
+
+// ============================================================
+// ENTER TO LOGIN
+// ============================================================
+
+document
+  .getElementById(
+    "password"
+  )
+  .addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        event.key ===
+        "Enter"
+      ) {
+        loginButton.click();
+      }
+
+    }
+  );
+
+</script>
+
+</body>
+</html>

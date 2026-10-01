@@ -7,8 +7,15 @@
 const STORAGE_KEY = "muxbee_chats_v1";
 const ACTIVE_CHAT_KEY = "muxbee_active_chat_v1";
 const MODE_KEY = "muxbee_mode_v1";
+const USER_ID_KEY = "muxbee_user_id_v1";
 
 const MAX_STORED_CHATS = 30;
+let userId = localStorage.getItem(USER_ID_KEY);
+
+if (!userId) {
+  userId = crypto.randomUUID();
+  localStorage.setItem(USER_ID_KEY, userId);
+}
 
 const modes = {
   general: {
@@ -837,6 +844,10 @@ async function sendMessage() {
         },
 
         body: JSON.stringify({
+         userId,
+
+          chatId: chat.id,
+          
           mode: currentMode,
 
           messages:
