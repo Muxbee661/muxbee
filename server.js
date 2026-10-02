@@ -554,6 +554,10 @@ app.get(
           GEMINI_API_KEY
         ),
 
+      hasAdminUsername: Boolean(ADMIN_USERNAME),
+
+      hasAdminPassword: Boolean(ADMIN_PASSWORD),
+
       model:
         GEMINI_MODEL
     });
